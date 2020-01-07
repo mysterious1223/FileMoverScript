@@ -2,7 +2,7 @@ import os
 import sys
 import shutil  
 
-if(len(sys.argv) < 2):
+if(len(sys.argv) <= 3):
     print("invalid param")
     sys.exit()
    
@@ -19,11 +19,14 @@ try:
     if (sys.argv [3] == '-F'):
         print ("[-] Including sub folders")
         IncludeFoldersFlag = True
-    if (sys.argv [3] == '-sF'):
+    elif (sys.argv [3] == '-sF'):
         print ("[-] Including sub folders")
         print ("[-] moving sub folders")
         MoveSubFolders = True
         IncludeFoldersFlag = True
+    else:
+        print ("[!] Invalid argument")
+        sys.exit()
 except:
     print ("[!] Sub folders ignored")
 
@@ -39,16 +42,16 @@ def CreateMissingDirectories (CurrentSourceDirectory, SourceDirectory, EndDirect
         currentPathBuild += folder + "/"
         if (folder != ""):
             if not (os.path.exists(EndDirectory + '/' + currentPathBuild)):
-                print ("[debug] missing folder : " + currentPathBuild)
-                print ("[debug] new  : " + currentPathBuild + " -> " + EndDirectory + '/' + currentPathBuild )
+                #print ("[debug] missing folder : " + currentPathBuild)
+                #print ("[debug] new  : " + currentPathBuild + " -> " + EndDirectory + '/' + currentPathBuild )
                 os.mkdir (EndDirectory + '/' + currentPathBuild)
                 print ("[+] New directory created")
 def copy_file_over (filename, CurrentSourceDirectory):
 
     if (CurrentSourceDirectory != SourceDirectory):
-        print ("[debug] Detected a sub directory! ->> " +CurrentSourceDirectory)
+        #print ("[debug] Detected a sub directory! ->> " +CurrentSourceDirectory)
 
-        print ("[debug] " + getDirectoryFromPath (CurrentSourceDirectory, SourceDirectory))
+        #print ("[debug] " + getDirectoryFromPath (CurrentSourceDirectory, SourceDirectory))
 
         # we will need recursion or loop to make all directories?
         #move sub folders too
@@ -82,20 +85,3 @@ def ProcessMove (CurrentSourceDirectory):
 
 
 ProcessMove (SourceDirectory)
-
-#for filename in os.listdir (SourceDirectory):
-
-    #do something
- #   print ("[-] copying : ["+filename+']')
-
-    
-
-    #process the move
-  #  if (os.path.isfile (SourceDirectory + '/' + filename)):
-
-   #     copy_file_over (filename)
-
-    #elif (IncludeFoldersFlag == True):
-        #print ('['+filename+']' + " is not a file... ")
-    #else:
-     #   print ('['+filename+']' + " is not a file... ")
