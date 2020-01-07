@@ -2,7 +2,7 @@ import os
 import sys
 import shutil  
 
-if(len(sys.argv) <= 3 or len(sys.argv) <= 2):
+if(len(sys.argv) >=1 and len(sys.argv) <= 2):
     print("invalid param")
     sys.exit()
    
