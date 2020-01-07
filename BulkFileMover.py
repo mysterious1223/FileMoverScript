@@ -19,9 +19,11 @@ try:
     if (sys.argv [3] == '-F'):
         print ("[-] Including sub folders")
         IncludeFoldersFlag = True
-    if (sys.argv [4] == '-S'):
+    if (sys.argv [3] == '-sF'):
+        print ("[-] Including sub folders")
         print ("[-] moving sub folders")
         MoveSubFolders = True
+        IncludeFoldersFlag = True
 except:
     print ("[!] Sub folders ignored")
 
