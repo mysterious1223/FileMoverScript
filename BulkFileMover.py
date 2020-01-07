@@ -2,7 +2,7 @@ import os
 import sys
 import shutil  
 
-if(len(sys.argv) <= 3):
+if(len(sys.argv) <= 3 or len(sys.argv) <= 2):
     print("invalid param")
     sys.exit()
    
@@ -63,7 +63,7 @@ def copy_file_over (filename, CurrentSourceDirectory):
     else:
         shutil.copy (CurrentSourceDirectory + '/' + filename, EndDirectory+ '/' +filename)
 
-    print ("[+] Copyied -" + CurrentSourceDirectory + '/' + filename +" ------> "+ EndDirectory+"/" +filename)
+    print ("[+] Copied -" + CurrentSourceDirectory + '/' + filename +" ------> "+ EndDirectory+"/" +filename)
 
 
 
@@ -85,3 +85,20 @@ def ProcessMove (CurrentSourceDirectory):
 
 
 ProcessMove (SourceDirectory)
+
+#for filename in os.listdir (SourceDirectory):
+
+    #do something
+ #   print ("[-] copying : ["+filename+']')
+
+    
+
+    #process the move
+  #  if (os.path.isfile (SourceDirectory + '/' + filename)):
+
+   #     copy_file_over (filename)
+
+    #elif (IncludeFoldersFlag == True):
+        #print ('['+filename+']' + " is not a file... ")
+    #else:
+     #   print ('['+filename+']' + " is not a file... ")
